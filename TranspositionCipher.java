@@ -7,26 +7,15 @@ import java.net.URL;
 public class TranspositionCipher {
 
 	public static String encrypt(String inputString){
-		//System.out.println("Encrypting");
+	
 		int length = inputString.length();
 
 		int squareSize = (int) Math.sqrt(length);
 		double extraRowsReq = Math.ceil((length-squareSize*squareSize)/(double)squareSize);
 		int rowLength =  squareSize+ (int)extraRowsReq;
 
-		/*int squareSize = (int) Math.sqrt(length);
-		if((squareSize*squareSize)==length)
-		 {
-			int rowLength=squareSize;
-		 }
-		else {
-		 	double extraRowsReq = Math.ceil((length-squareSize*squareSize)/(double)squareSize);
-		int rowLength =  squareSize+ (int)extraRowsReq;
-		     }*/
-
 		char [][] tempArray = new char [rowLength][squareSize];
-		//char [][] reversedTempArray = new char [squareSize][rowLength];
-		//System.out.println("Row "+rowLength+" Col"+squareSize);
+	
 		String outputString = "" ;
 		int k =0;
 		for(int i =0;i<rowLength;i++)
@@ -41,7 +30,7 @@ public class TranspositionCipher {
 				outputString += tempArray[j][i];
 				//System.out.println(tempArray[j][i]);
 			}
-		//outputString = reversedTempArray.toString();		
+			
 		return outputString;
 		
 	}
@@ -64,11 +53,7 @@ public class TranspositionCipher {
 					tempArray[i][j] = '\0';
 				k++;
 			}
-		/*for(int i=0;i<colLength;i++){
-			for(int j=0;j<squareSize;j++)
-				System.out.print(tempArray[i][j]);
-			System.out.println();
-		}*/
+	
 		for(int i =0;i<colLength;i++){
 			for(int j=0;j<squareSize;j++){
 				outputString += tempArray[j][i];
@@ -93,7 +78,7 @@ public class TranspositionCipher {
 				encrypt = true;
 			System.out.print("Enter the input String : ");
 			INPUT = br.readLine();
-			//int count=INPUT.length() - INPUT.replaceAll("\\s+","").length();
+			
 			inputString =INPUT.replaceAll("\\s+","");
 			if(encrypt)
 				outputString = encrypt(inputString);
